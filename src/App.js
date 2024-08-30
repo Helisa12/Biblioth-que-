@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import NavBar from './component/NavBar';
+import Footer from './component/Footer';
+import AddBooks from './containers/AddBooks';
+import BooksSearch from './containers/BooksSearch';
+import { ToastContainer } from 'react-toastify';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <Router>
+      <div className='d-flex flex-column min-vh-100'>
+        <NavBar />
+        <ToastContainer />
+          <Routes>
+            <Route path="/" element={<AddBooks />} />
+            <Route path='/search' element={<BooksSearch/>}/>
+          </Routes>
+        <Footer />
+      </div>
+    </Router>
+  )
+};
 
 export default App;
